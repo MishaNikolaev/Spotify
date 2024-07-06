@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.spotify.presentation.ChooseThemeScreen
 import com.example.spotify.presentation.FirstScreen
 import com.example.spotify.ui.theme.SpotifyTheme
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FirstScreen()
+            ChooseThemeScreen()
         }
     }
 }
