@@ -1,12 +1,10 @@
 package com.example.spotify.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navigation
+import com.example.spotify.data.songsList
 import com.example.spotify.presentation.AuthScreen
 import com.example.spotify.presentation.ChooseThemeScreen
 import com.example.spotify.presentation.FirstScreen
@@ -51,7 +49,7 @@ fun NavGraphWelcome() {
         }
 
         composable(WelcomeRoutes.HomeScreen.route) {
-            HomeScreen()
+            HomeScreen(songsList)
         }
 
     }

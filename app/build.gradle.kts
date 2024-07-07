@@ -88,4 +88,6 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation("com.google.firebase:firebase-analytics")
 
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.2.2")
 }
