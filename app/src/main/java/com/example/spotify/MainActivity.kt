@@ -26,6 +26,8 @@ import com.example.spotify.presentation.RegisterScreen
 import com.example.spotify.presentation.SignInScreen
 import com.example.spotify.presentation.navigation.NavGraphWelcome
 import com.example.spotify.ui.theme.SpotifyTheme
+import com.google.firebase.FirebaseApp
+import com.google.firebase.perf.metrics.AddTrace
 
 class MainActivity : ComponentActivity() {
     private val viewmodel by viewModels<MainViewModel>()

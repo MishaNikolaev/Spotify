@@ -10,7 +10,19 @@ activityCompose = "1.9.0"
 composeBom = "2024.04.01"
 volley = "1.2.1"
 
+
+gmsVersion = "4.4.1"
+boomVersion = "33.0.0"
+firebasePerfKtx = "21.0.1"
+
 [libraries]
+
+
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "boomVersion" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx"}
+firebase-storage = {group = "com.google.firebase", name = "firebase-storage-ktx"}
+firebase-auth = { module = "com.google.firebase:firebase-auth"}
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -26,8 +38,10 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
+firebase-perf-ktx = { group = "com.google.firebase", name = "firebase-perf-ktx", version.ref = "firebasePerfKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+gms = { id = "com.google.gms.google-services", version.ref = "gmsVersion" }
 

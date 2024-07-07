@@ -1,5 +1,6 @@
 package com.example.spotify.presentation
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -45,12 +46,18 @@ import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiBlue
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun RegisterScreen(navController: NavController) {
-    var email by remember { mutableStateOf("") }
-    var fullName by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+
+    val auth = Firebase.auth
+
+    var emailState = remember { mutableStateOf("") }
+    var fullName = remember { mutableStateOf("") }
+    var passwordState = remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -92,8 +99,8 @@ fun RegisterScreen(navController: NavController) {
         }
 
         OutlinedTextField(
-            value = fullName,
-            onValueChange = { fullName = it },
+            value = fullName.value,
+            onValueChange = { fullName.value = it },
             label = {
                 Text(
                     "Full Name",
@@ -110,8 +117,8 @@ fun RegisterScreen(navController: NavController) {
 
 
         OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
+            value = emailState.value,
+            onValueChange = { emailState.value = it },
             label = {
                 Text(
                     "Enter Email",
@@ -126,8 +133,8 @@ fun RegisterScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
+            value = passwordState.value,
+            onValueChange = { passwordState.value = it },
             label = {
                 Text(
                     "Password",
@@ -142,7 +149,9 @@ fun RegisterScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { navController.navigate(WelcomeRoutes.HomeScreen.route) },
+            onClick = {
+                signUp(auth, emailState.value, passwordState.value)
+                navController.navigate(WelcomeRoutes.SignInScreen.route)},
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(SpotiGreen)
         ) {
@@ -195,4 +204,16 @@ fun RegisterScreen(navController: NavController) {
             }
         }
     }
+}
+
+private fun signUp(auth : FirebaseAuth, email: String, password: String){
+    auth.createUserWithEmailAndPassword(email, password)
+        .addOnCompleteListener{
+            if (it.isSuccessful){
+                Log.d("MyLog", "Sign Up successful")
+            }
+            else{
+                Log.d("MyLog", "Sign Up exception")
+            }
+        }
 }
