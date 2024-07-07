@@ -33,12 +33,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.spotify.R
+import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
 
 @Composable
-fun ChooseThemeScreen() {
+fun ChooseThemeScreen(navController: NavController) {
     var isDarkMode by remember { mutableStateOf(true) }
 
     Box(
@@ -100,7 +102,9 @@ fun ChooseThemeScreen() {
             Spacer(modifier = Modifier.height(40.dp))
 
             Button(
-                onClick = {  },
+                onClick = {
+                    navController.navigate(WelcomeRoutes.AuthScreen.route)
+                },
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = SpotiGreen

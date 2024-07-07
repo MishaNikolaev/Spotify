@@ -17,12 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
 import com.example.spotify.presentation.AuthScreen
 import com.example.spotify.presentation.ChooseThemeScreen
 import com.example.spotify.presentation.FirstScreen
 import com.example.spotify.presentation.MainViewModel
 import com.example.spotify.presentation.RegisterScreen
 import com.example.spotify.presentation.SignInScreen
+import com.example.spotify.presentation.navigation.NavGraphWelcome
 import com.example.spotify.ui.theme.SpotifyTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ChooseThemeScreen()
+            NavGraphWelcome()
         }
     }
 }

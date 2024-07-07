@@ -26,11 +26,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.spotify.R
+import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiDark
 
 @Composable
-fun AuthScreen() {
+fun AuthScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -74,7 +76,9 @@ fun AuthScreen() {
                     .padding(bottom = 32.dp, start = 10.dp)
             ) {
                 Button(
-                    onClick = {  },
+                    onClick = {
+                        navController.navigate(WelcomeRoutes.RegisterScreen.route)
+                    },
                     shape = RoundedCornerShape(50),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF1DB954)
@@ -93,7 +97,9 @@ fun AuthScreen() {
                     color = SpotiDark,
                     modifier = Modifier
                         .weight(1f)
-                        .clickable { /* TODO: Handle Sign in click */ }
+                        .clickable {
+                            navController.navigate(WelcomeRoutes.SignInScreen.route)
+                        }
                         .padding(start = 30.dp)
                 )
             }
