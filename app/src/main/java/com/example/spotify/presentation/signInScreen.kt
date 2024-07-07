@@ -145,7 +145,7 @@ fun SignInScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { signIn(auth, emailState.value, passwordState.value)
+            onClick = { //signIn(auth, emailState.value, passwordState.value)
                 navController.navigate(WelcomeRoutes.HomeScreen.route)
                       },
             modifier = Modifier.fillMaxWidth(),
