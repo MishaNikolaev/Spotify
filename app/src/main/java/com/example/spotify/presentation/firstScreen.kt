@@ -28,13 +28,15 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.android.volley.toolbox.ImageLoader
 import com.example.spotify.R
+import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.fontFamily
 
 @Composable
-fun FirstScreen() {
+fun FirstScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -78,7 +80,9 @@ fun FirstScreen() {
             )
 
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate(WelcomeRoutes.ChooseThemeScreen.route)
+                },
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = SpotiGreen

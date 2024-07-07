@@ -39,13 +39,15 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.spotify.R
+import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiBlue
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var fullName by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -140,7 +142,7 @@ fun RegisterScreen() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(WelcomeRoutes.HomeScreen.route) },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(SpotiGreen)
         ) {
@@ -186,7 +188,9 @@ fun RegisterScreen() {
                 color = SpotiDark,
                 modifier = Modifier.padding(top = 15.dp)
             )
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(onClick = {
+                navController.navigate(WelcomeRoutes.SignInScreen.route)
+            }) {
                 Text("Sign In", color = SpotiBlue)
             }
         }

@@ -70,4 +70,11 @@ dependencies {
 
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.8") // google fonts
     implementation("androidx.core:core-splashscreen:1.0.1") // splash screen
+
+    //Compose Navigation
+    implementation ("androidx.navigation:navigation-compose:2.6.0")
+
+    //Paging 3
+    implementation ("androidx.paging:paging-runtime:3.1.1")
+    implementation ("androidx.paging:paging-compose:3.2.0-rc01")
 }
