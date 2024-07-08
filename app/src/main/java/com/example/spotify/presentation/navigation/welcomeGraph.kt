@@ -13,7 +13,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -23,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
@@ -44,6 +47,7 @@ import com.example.spotify.presentation.home.HomeScreenUI
 import com.example.spotify.presentation.news.NewsScreen
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
+import com.example.spotify.ui.theme.SpotiLightGray
 
 sealed class WelcomeRoutes(val route: String) {
     object FirstScreen : WelcomeRoutes("first_screen")
@@ -110,26 +114,31 @@ fun BottomNavigationBar(navController: NavHostController) {
         BottomNavItem.Favorite
     )
 
-    NavigationBar {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
 
+    NavigationBar(containerColor = SpotiLightGray) {
         items.forEach { item ->
+            val isActive = currentRoute == item.route
+            val iconResId = if (isActive) item.activeIcon else item.icon
+
             NavigationBarItem(
                 icon = {
                     Image(
-                        painter = painterResource(id = item.icon),
+                        painter = painterResource(id = iconResId),
                         contentDescription = item.title,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier.size(28.dp)
                     )
                 },
                 label = { Text(text = item.title) },
-                selected = currentRoute == item.route,
+                selected = false,
                 onClick = {
-                    navController.navigate(item.route) {
-                        popUpTo(navController.graph.startDestinationId) { saveState = true }
-                        launchSingleTop = true
-                        restoreState = true
+                    if (currentRoute != item.route) {
+                        navController.navigate(item.route) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
                     }
                 }
             )
@@ -137,23 +146,23 @@ fun BottomNavigationBar(navController: NavHostController) {
     }
 }
 
-sealed class BottomNavItem(var title: String, var icon: Int, var route: String) {
-    object Home : BottomNavItem("Home", R.drawable.home_2, "home")
-    object News : BottomNavItem("News", R.drawable.discovery_1, "news")
-    object Favorite : BottomNavItem("Favorite", R.drawable.profile_1, "favorite")
+sealed class BottomNavItem(val route: String, val icon: Int, val activeIcon: Int, val title: String) {
+    object Home : BottomNavItem("home", R.drawable.home_2, R.drawable.home_ic_active, "")
+    object News : BottomNavItem("news", R.drawable.discovery_1, R.drawable.discovery_ic_active, "")
+    object Favorite : BottomNavItem("favorite", R.drawable.profile_1, R.drawable.profile_ic_active, "")
 }
 
 @Composable
 fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(navController = navController, startDestination = BottomNavItem.Home.route, modifier = modifier) {
         composable(BottomNavItem.Home.route) {
-            HomeScreenUI() // Ваш экран HomeScreen
+            HomeScreenUI()
         }
         composable(BottomNavItem.News.route) {
-            NewsScreen() // Ваш экран NewsScreen
+            NewsScreen()
         }
         composable(BottomNavItem.Favorite.route) {
-            HomeScreen(songsList) // Ваш экран FavoriteScreen
+            HomeScreen(songsList)
         }
     }
 }
