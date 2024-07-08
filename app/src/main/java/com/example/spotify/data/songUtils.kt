@@ -169,10 +169,17 @@ val songsList: List<Song> = listOf(
     Song(
         imageUrl = "https://i.ytimg.com/vi/Fx_foXuXk40/maxresdefault.jpg",
         media = "https://rus.hitmotop.com/get/music/20200919/Ansambl_pesni_i_plyaski_Rossijjskojj_Armii_imeni_A_V_Aleksandrova_-_Marsh_artilleristov_70982827.mp3",
-        duration = "1^40",
+        duration = "1:40",
         title = "Марш Артиллеристов",
         artist = "Академический Ансамбль"
     ),
+    /*Song(
+        imageUrl = "",
+        media = "",
+        duration = "",
+        title = "",
+        artist = ""
+    ),*/
 
 
 )

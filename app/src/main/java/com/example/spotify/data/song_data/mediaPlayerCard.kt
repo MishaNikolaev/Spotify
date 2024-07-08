@@ -41,6 +41,7 @@ import coil.compose.AsyncImage
 import com.example.spotify.R
 import com.example.spotify.data.Song
 import com.example.spotify.ui.theme.SpotiGreen
+import com.example.spotify.ui.theme.SpotiLightGray
 
 @Composable
 fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song) {
@@ -51,10 +52,10 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song) {
         SongHelper.pauseStream()
     }
 
-    Card(modifier  = modifier.offset(y = (-45).dp),
+    Card(modifier  = modifier.offset(y = (-5).dp),
         elevation  = CardDefaults.cardElevation(defaultElevation = 8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = SpotiGreen
+            containerColor = SpotiLightGray
     )) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

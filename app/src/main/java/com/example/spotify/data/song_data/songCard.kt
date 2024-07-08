@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.spotify.data.Song
 import com.example.spotify.ui.theme.SpotiGreen
+import com.example.spotify.ui.theme.SpotiLightGray
 
 @Composable
 fun SongCard(song: Song, onClick: () -> Unit) {
@@ -33,7 +35,7 @@ fun SongCard(song: Song, onClick: () -> Unit) {
             .fillMaxWidth()
             .clickable { onClick() },
         colors = CardDefaults.cardColors(
-            containerColor = SpotiGreen
+            containerColor = SpotiLightGray
         )
     ) {
         Row(
