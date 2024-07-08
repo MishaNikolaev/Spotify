@@ -24,6 +24,7 @@ import com.example.spotify.presentation.FirstScreen
 import com.example.spotify.presentation.MainViewModel
 import com.example.spotify.presentation.RegisterScreen
 import com.example.spotify.presentation.SignInScreen
+import com.example.spotify.presentation.navigation.MainScreen
 import com.example.spotify.presentation.navigation.NavGraphWelcome
 import com.example.spotify.ui.theme.SpotifyTheme
 import com.google.firebase.FirebaseApp
@@ -35,7 +36,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NavGraphWelcome()
+            //NavGraphWelcome()
+            MainScreen()
         }
     }
 }

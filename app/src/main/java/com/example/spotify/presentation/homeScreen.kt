@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -41,37 +43,45 @@ import androidx.compose.ui.unit.sp
 import com.example.spotify.R
 import com.example.spotify.data.Song
 import com.example.spotify.data.song_data.MediaPlayerCard
+import com.example.spotify.data.song_data.SongCard
 import com.example.spotify.data.song_data.SongsList
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
-
+import com.example.spotify.ui.theme.SpotiLightGray
 
 @Composable
 fun HomeScreen(songsList: List<Song>) {
     var searchSongState = remember { mutableStateOf("") }
     var selectedSong by remember { mutableStateOf<Song?>(null) }
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(SpotiDark),
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(SpotiLightGray),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center) {
+        verticalArrangement = Arrangement.Top
+    ) {
 
         Image(
             painter = painterResource(id = R.drawable.spot_big),
             contentDescription = "Spotify Logo",
-            modifier = Modifier.size(140.dp).padding(top = 30.dp),
-            alignment = Alignment.TopCenter
+            modifier = Modifier
+                .size(140.dp)
+                .padding(top = 20.dp),
+            alignment = Alignment.Center
         )
 
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(14.dp)
-                .background(Color.White)
+                .padding(horizontal = 14.dp)
         ) {
-            SongsList(songsList = songsList, onSongSelected = { song ->
-                selectedSong = song
-            })
+            SongsList(
+                songsList = songsList,
+                onSongSelected = { song ->
+                    selectedSong = song
+                }
+            )
+
             selectedSong?.let {
                 MediaPlayerCard(
                     modifier = Modifier
@@ -81,7 +91,6 @@ fun HomeScreen(songsList: List<Song>) {
                     it
                 )
             }
-
         }
     }
 }
