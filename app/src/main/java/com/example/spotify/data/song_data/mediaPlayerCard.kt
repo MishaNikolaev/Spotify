@@ -64,12 +64,17 @@ import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
 import kotlinx.coroutines.delay
 @Composable
-fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song, previousSong: () -> Unit, nextSong: () -> Unit) {
-    var songState by remember { mutableStateOf(false) }
+fun MediaPlayerCard(
+    modifier: Modifier = Modifier,
+    song: Song,
+    previousSong: () -> Unit,
+    nextSong: () -> Unit
+) {
+    var isPlaying by remember { mutableStateOf(false) }
     var showDialog by remember { mutableStateOf(false) }
 
-    LaunchedEffect(songState) {
-        if (songState) {
+    LaunchedEffect(isPlaying) {
+        if (isPlaying) {
             SongHelper.playStream(song.media)
         } else {
             SongHelper.pauseStream()
@@ -115,14 +120,15 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song, previousSong: () 
             Icon(
                 imageVector = Icons.Default.SkipPrevious,
                 contentDescription = "previous",
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = Modifier
+                    .padding(start = 10.dp)
                     .size(28.dp)
                     .clickable {
                         previousSong()
                     }
             )
             Icon(
-                painter = if (songState) {
+                painter = if (isPlaying) {
                     painterResource(id = R.drawable.pause)
                 } else {
                     painterResource(id = R.drawable.play_button_arrowhead)
@@ -132,13 +138,14 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song, previousSong: () 
                     .padding(start = 25.dp)
                     .size(20.dp)
                     .clickable {
-                        songState = !songState
+                        isPlaying = !isPlaying
                     }
             )
             Icon(
                 imageVector = Icons.Default.SkipNext,
                 contentDescription = "next",
-                modifier = Modifier.padding(start = 20.dp)
+                modifier = Modifier
+                    .padding(start = 20.dp)
                     .size(28.dp)
                     .clickable {
                         nextSong()
@@ -149,22 +156,36 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song, previousSong: () 
 
     DisposableEffect(song.media) {
         onDispose {
-            songState = false
+            isPlaying = false
             SongHelper.releasePlayer()
         }
     }
 
     if (showDialog) {
-        SongDialog(song = song, onDismiss = { showDialog = false }, previousSong = previousSong, nextSong = nextSong)
+        SongDialog(
+            song = song,
+            onDismiss = { showDialog = false },
+            previousSong = previousSong,
+            nextSong = nextSong,
+            isPlaying = isPlaying,
+            togglePlayingState = { isPlaying = !isPlaying }
+        )
     }
 }
 
 
+
 @Composable
-fun SongDialog(song: Song, onDismiss: () -> Unit, previousSong: () -> Unit, nextSong: () -> Unit) {
+fun SongDialog(
+    song: Song,
+    onDismiss: () -> Unit,
+    previousSong: () -> Unit,
+    nextSong: () -> Unit,
+    isPlaying: Boolean,
+    togglePlayingState: () -> Unit
+) {
     var currentPosition by remember { mutableStateOf(0) }
     val duration = remember { SongHelper.getDuration() }
-    var isPlaying by remember { mutableStateOf(true) }
 
     LaunchedEffect(song.media) {
         while (true) {
@@ -218,9 +239,9 @@ fun SongDialog(song: Song, onDismiss: () -> Unit, previousSong: () -> Unit, next
                         .fillMaxWidth()
                         .padding(vertical = 16.dp),
                     colors = SliderDefaults.colors(
-                        thumbColor = SpotiGreen,
-                        activeTrackColor = SpotiGreen,
-                        inactiveTrackColor = SpotiGreen.copy(alpha = 0.24f)
+                        thumbColor = Color.Green,
+                        activeTrackColor = Color.Green,
+                        inactiveTrackColor = Color.Green.copy(alpha = 0.24f)
                     )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
@@ -248,16 +269,9 @@ fun SongDialog(song: Song, onDismiss: () -> Unit, previousSong: () -> Unit, next
                         modifier = Modifier
                             .size(28.dp)
                             .clickable {
-                                isPlaying = !isPlaying
-                                if (isPlaying) {
-                                    SongHelper.playStream(song.media)
-                                } else {
-                                    SongHelper.pauseStream()
-                                }
+                                togglePlayingState()
                             }
                     )
-
-
                     Spacer(modifier = Modifier.width(36.dp))
                     Icon(
                         imageVector = Icons.Default.SkipNext,
@@ -284,7 +298,6 @@ fun SongDialog(song: Song, onDismiss: () -> Unit, previousSong: () -> Unit, next
         }
     }
 }
-
 
 object MediaPlayerSingleton {
     private var mediaPlayer: MediaPlayer? = null
