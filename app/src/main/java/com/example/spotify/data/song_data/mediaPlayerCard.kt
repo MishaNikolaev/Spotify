@@ -18,7 +18,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.PauseCircle
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.PlayCircle
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
@@ -28,6 +30,7 @@ import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -44,20 +47,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.spotify.R
 import com.example.spotify.data.Song
+import com.example.spotify.data.songsList
 import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
 import kotlinx.coroutines.delay
 @Composable
-fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song) {
+fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song, previousSong: () -> Unit, nextSong: () -> Unit) {
     var songState by remember { mutableStateOf(false) }
     var showDialog by remember { mutableStateOf(false) }
 
@@ -106,6 +113,15 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song) {
                 )
             }
             Icon(
+                imageVector = Icons.Default.SkipPrevious,
+                contentDescription = "previous",
+                modifier = Modifier.padding(start = 10.dp)
+                    .size(28.dp)
+                    .clickable {
+                        previousSong()
+                    }
+            )
+            Icon(
                 painter = if (songState) {
                     painterResource(id = R.drawable.pause)
                 } else {
@@ -113,10 +129,19 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song) {
                 },
                 contentDescription = "Pause/Play",
                 modifier = Modifier
-                    .padding(end = 30.dp)
+                    .padding(start = 25.dp)
                     .size(20.dp)
                     .clickable {
                         songState = !songState
+                    }
+            )
+            Icon(
+                imageVector = Icons.Default.SkipNext,
+                contentDescription = "next",
+                modifier = Modifier.padding(start = 20.dp)
+                    .size(28.dp)
+                    .clickable {
+                        nextSong()
                     }
             )
         }
@@ -130,13 +155,13 @@ fun MediaPlayerCard(modifier: Modifier = Modifier, song: Song) {
     }
 
     if (showDialog) {
-        SongDialog(song = song, onDismiss = { showDialog = false })
+        SongDialog(song = song, onDismiss = { showDialog = false }, previousSong = previousSong, nextSong = nextSong)
     }
 }
 
 
 @Composable
-fun SongDialog(song: Song, onDismiss: () -> Unit) {
+fun SongDialog(song: Song, onDismiss: () -> Unit, previousSong: () -> Unit, nextSong: () -> Unit) {
     var currentPosition by remember { mutableStateOf(0) }
     val duration = remember { SongHelper.getDuration() }
     var isPlaying by remember { mutableStateOf(true) }
@@ -209,7 +234,7 @@ fun SongDialog(song: Song, onDismiss: () -> Unit) {
                         modifier = Modifier
                             .size(28.dp)
                             .clickable {
-
+                                previousSong()
                             }
                     )
                     Spacer(modifier = Modifier.width(36.dp))
@@ -231,6 +256,8 @@ fun SongDialog(song: Song, onDismiss: () -> Unit) {
                                 }
                             }
                     )
+
+
                     Spacer(modifier = Modifier.width(36.dp))
                     Icon(
                         imageVector = Icons.Default.SkipNext,
@@ -238,7 +265,7 @@ fun SongDialog(song: Song, onDismiss: () -> Unit) {
                         modifier = Modifier
                             .size(28.dp)
                             .clickable {
-
+                                nextSong()
                             }
                     )
                 }
@@ -274,4 +301,3 @@ object MediaPlayerSingleton {
         mediaPlayer = null
     }
 }
-
