@@ -5,44 +5,44 @@ import android.media.MediaPlayer
 class SongHelper {
     companion object {
         private var mediaPlayer: MediaPlayer? = null
-        private var currentPosition = 0
 
         fun playStream(url: String) {
-            mediaPlayer?.let {
-                if(it.isPlaying) {
-                    mediaPlayer?.stop()
-                    mediaPlayer?.reset()
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer().apply {
+                    setDataSource(url)
+                    prepareAsync()
                 }
             }
-            mediaPlayer?.release()
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(url)
-                prepareAsync()
-            }
             mediaPlayer?.setOnPreparedListener { mediaPlayer ->
-                mediaPlayer.seekTo(currentPosition)
                 mediaPlayer.start()
             }
+            mediaPlayer?.start()
         }
 
         fun pauseStream() {
-            mediaPlayer?.let {
-                currentPosition = it.currentPosition
-                it.pause()
-            }
+            mediaPlayer?.pause()
         }
 
         fun stopStream() {
             mediaPlayer?.stop()
             mediaPlayer?.reset()
-            currentPosition = 0
         }
 
         fun releasePlayer() {
-            mediaPlayer?.reset()
             mediaPlayer?.release()
             mediaPlayer = null
-            currentPosition = 0
+        }
+
+        fun getDuration(): Int {
+            return mediaPlayer?.duration ?: 0
+        }
+
+        fun getCurrentPosition(): Int {
+            return mediaPlayer?.currentPosition ?: 0
+        }
+
+        fun seekTo(position: Int) {
+            mediaPlayer?.seekTo(position)
         }
     }
 }
