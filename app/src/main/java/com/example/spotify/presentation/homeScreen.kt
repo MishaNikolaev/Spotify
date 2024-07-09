@@ -52,7 +52,9 @@ import com.example.spotify.ui.theme.SpotiLightGray
 @Composable
 fun HomeScreen(songsList: List<Song>) {
     var searchSongState = remember { mutableStateOf("") }
-    var selectedSong by remember { mutableStateOf<Song?>(null) }
+    var selectedSongIndex by remember { mutableStateOf(0) }
+    val selectedSong = songsList[selectedSongIndex]
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -60,7 +62,6 @@ fun HomeScreen(songsList: List<Song>) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-
         Image(
             painter = painterResource(id = R.drawable.spot_big),
             contentDescription = "Spotify Logo",
@@ -78,19 +79,27 @@ fun HomeScreen(songsList: List<Song>) {
             SongsList(
                 songsList = songsList,
                 onSongSelected = { song ->
-                    selectedSong = song
+                    selectedSongIndex = songsList.indexOf(song)
                 }
             )
 
-            selectedSong?.let {
-                MediaPlayerCard(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
-                        .background(Color.Transparent),
-                    it
-                )
-            }
+            MediaPlayerCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .background(Color.Transparent),
+                song = selectedSong,
+                previousSong = {
+                    if (selectedSongIndex > 0) {
+                        selectedSongIndex--
+                    }
+                },
+                nextSong = {
+                    if (selectedSongIndex < songsList.size - 1) {
+                        selectedSongIndex++
+                    }
+                }
+            )
         }
     }
 }
