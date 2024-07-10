@@ -59,6 +59,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.spotify.R
 import com.example.spotify.data.Song
+import com.example.spotify.data.song_data.SongHelper.Companion
 import com.example.spotify.data.songsList
 import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
@@ -76,10 +77,14 @@ fun MediaPlayerCard(
     LaunchedEffect(isPlaying) {
         if (isPlaying) {
             SongHelper.playStream(song.media)
+            SongHelper.setOnCompletionListener {
+                nextSong()
+            }
         } else {
             SongHelper.pauseStream()
         }
     }
+
 
     Card(
         modifier = modifier
