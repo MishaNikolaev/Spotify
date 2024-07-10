@@ -2,6 +2,7 @@ package com.example.spotify.data.song_data
 
 import android.content.Context
 import android.media.MediaPlayer
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
@@ -122,11 +124,11 @@ fun MediaPlayerCard(
                     overflow = TextOverflow.Ellipsis
                 )
             }
-            Icon(
-                imageVector = Icons.Default.SkipPrevious,
+            Image(
+                painter = painterResource(id = R.drawable.previous),
                 contentDescription = "previous",
                 modifier = Modifier
-                    .padding(start = 10.dp)
+                    .padding(start = 25.dp)
                     .size(28.dp)
                     .clickable {
                         previousSong()
@@ -139,6 +141,7 @@ fun MediaPlayerCard(
                     painterResource(id = R.drawable.play_button_arrowhead)
                 },
                 contentDescription = "Pause/Play",
+                tint = SpotiGreen,
                 modifier = Modifier
                     .padding(start = 25.dp)
                     .size(20.dp)
@@ -146,8 +149,8 @@ fun MediaPlayerCard(
                         isPlaying = !isPlaying
                     }
             )
-            Icon(
-                imageVector = Icons.Default.SkipNext,
+            Image(
+                painter = painterResource(id = R.drawable.next),
                 contentDescription = "next",
                 modifier = Modifier
                     .padding(start = 20.dp)
@@ -210,12 +213,22 @@ fun SongDialog(
             colors = CardDefaults.cardColors(containerColor = SpotiLightGray)
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
+                Image(
+                    painter = painterResource(id = R.drawable.left_2),
+                    contentDescription = "Previous Song",
+                    modifier = Modifier.background(SpotiGreen, shape = CircleShape)
+                        .size(28.dp)
+                        .clickable {
+                            onDismiss()
+                        }
+                )
                 AsyncImage(
                     model = song.imageUrl,
                     contentDescription = "Song thumbnail",
-                    modifier = Modifier
+                    modifier = Modifier.padding(top=20.dp)
                         .fillMaxWidth()
                         .aspectRatio(1f)
+                        .clip(RoundedCornerShape(30.dp))
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
@@ -244,9 +257,9 @@ fun SongDialog(
                         .fillMaxWidth()
                         .padding(vertical = 16.dp),
                     colors = SliderDefaults.colors(
-                        thumbColor = Color.Green,
-                        activeTrackColor = Color.Green,
-                        inactiveTrackColor = Color.Green.copy(alpha = 0.24f)
+                        thumbColor = SpotiGreen,
+                        activeTrackColor = SpotiGreen,
+                        inactiveTrackColor =SpotiGreen.copy(alpha = 0.24f)
                     )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
@@ -254,8 +267,8 @@ fun SongDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.SkipPrevious,
+                    Image(
+                        painter = painterResource(id = R.drawable.previous),
                         contentDescription = "Previous Song",
                         modifier = Modifier
                             .size(28.dp)
@@ -271,6 +284,7 @@ fun SongDialog(
                             painterResource(id = R.drawable.play_button_arrowhead)
                         },
                         contentDescription = "Pause/Play",
+                        tint = SpotiGreen,
                         modifier = Modifier
                             .size(28.dp)
                             .clickable {
@@ -278,8 +292,8 @@ fun SongDialog(
                             }
                     )
                     Spacer(modifier = Modifier.width(36.dp))
-                    Icon(
-                        imageVector = Icons.Default.SkipNext,
+                    Image(
+                        painter = painterResource(id = R.drawable.next),
                         contentDescription = "Next Song",
                         modifier = Modifier
                             .size(28.dp)
@@ -287,17 +301,6 @@ fun SongDialog(
                                 nextSong()
                             }
                     )
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    TextButton(onClick = {
-                        onDismiss()
-                    }) {
-                        Text("Закрыть")
-                    }
                 }
             }
         }
