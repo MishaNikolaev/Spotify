@@ -11,12 +11,24 @@ class SongHelper {
                 mediaPlayer = MediaPlayer().apply {
                     setDataSource(url)
                     prepareAsync()
+                    setOnPreparedListener { mediaPlayer ->
+                        mediaPlayer.start()
+                    }
+                    setOnCompletionListener {
+                        onCompletionListener?.invoke()
+                    }
+                }
+            } else {
+                mediaPlayer?.reset()
+                mediaPlayer?.setDataSource(url)
+                mediaPlayer?.prepareAsync()
+                mediaPlayer?.setOnPreparedListener { preparedMediaPlayer ->
+                    preparedMediaPlayer.start()
+                }
+                mediaPlayer?.setOnCompletionListener {
+                    onCompletionListener?.invoke()
                 }
             }
-            mediaPlayer?.setOnPreparedListener { mediaPlayer ->
-                mediaPlayer.start()
-            }
-            mediaPlayer?.start()
         }
 
         fun pauseStream() {
@@ -44,5 +56,12 @@ class SongHelper {
         fun seekTo(position: Int) {
             mediaPlayer?.seekTo(position)
         }
+
+        private var onCompletionListener: (() -> Unit)? = null
+
+        fun setOnCompletionListener(listener: () -> Unit) {
+            onCompletionListener = listener
+        }
+
     }
 }
