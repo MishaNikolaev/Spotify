@@ -159,7 +159,7 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
             HomeScreenUI()
         }
         composable(BottomNavItem.News.route) {
-            NewsScreen()
+            NewsScreen(navController)
         }
         composable(BottomNavItem.Favorite.route) {
             HomeScreen(songsList)
