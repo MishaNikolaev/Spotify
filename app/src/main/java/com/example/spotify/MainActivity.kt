@@ -25,6 +25,7 @@ import com.example.spotify.presentation.RegisterScreen
 import com.example.spotify.presentation.SignInScreen
 import com.example.spotify.presentation.SongViewModel
 import com.example.spotify.presentation.navigation.MainScreen
+import com.example.spotify.presentation.navigation.NavGraphSearch
 import com.example.spotify.presentation.navigation.NavGraphWelcome
 import com.example.spotify.ui.theme.SpotifyTheme
 import com.google.firebase.FirebaseApp
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             //NavGraphWelcome()
             MainScreen()
+            //NavGraphSearch()
         }
     }
 }

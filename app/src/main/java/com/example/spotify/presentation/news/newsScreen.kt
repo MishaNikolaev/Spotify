@@ -15,10 +15,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,31 +40,33 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.spotify.R
 import com.example.spotify.data.song_data.MediaPlayerCard
 import com.example.spotify.data.song_data.SongsList
 import com.example.spotify.data.songsList
 import com.example.spotify.presentation.HomeScreen
+import com.example.spotify.presentation.navigation.SearchRoutes
 import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
 
 @Composable
-fun NewsScreen(){
+fun NewsScreen(navController: NavController){
     Column(modifier = Modifier
-        //.verticalScroll(rememberScrollState())
+        .verticalScroll(rememberScrollState())
         .fillMaxSize()
         .background(SpotiLightGray)
         .padding(16.dp)
     ) {
         SearchBar()
         Spacer(modifier = Modifier.height(16.dp))
-        TopGenresSection()
+        TopGenresSection(navController = navController)
         Spacer(modifier = Modifier.height(16.dp))
-        PopularPodcastCategoriesSection()
+        PopularPodcastCategoriesSection(navController = navController)
         Spacer(modifier = Modifier.height(16.dp))
-        BrowseAllSection()
+        BrowseAllSection(navController = navController)
     }
 }
 
@@ -100,7 +104,7 @@ fun SearchBar() {
 }
 
 @Composable
-fun TopGenresSection() {
+fun TopGenresSection(navController: NavController) {
     Column() {
 
         Text(
@@ -117,26 +121,26 @@ fun TopGenresSection() {
                     .height(110.dp)
                     .width(150.dp)
                     .clip(RoundedCornerShape(20.dp))
-                    .background(Color.Black)
-                    .padding(16.dp)
                     .clickable {
-
-                    },
+                        navController.navigate(SearchRoutes.PhonkScreen.route)
+                    }
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.pxlwyse_eu_sento_gabu),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(20.dp))
+                )
+
                 Text(
                     text = "Phonk",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = SpotiLightGray,
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.jf7_opr81j0),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(80.dp)
-                        .padding(top = 15.dp)
-                        .align(Alignment.BottomEnd)
+                        .padding(top = 20.dp, start = 55.dp)
                 )
             }
             Spacer(modifier = Modifier.width(20.dp))
@@ -146,25 +150,26 @@ fun TopGenresSection() {
                     .height(110.dp)
                     .width(150.dp)
                     .clip(RoundedCornerShape(20.dp))
-                    .background(Color(0xFFEF212E))
-                    .padding(16.dp)
                     .clickable {
-
+                        navController.navigate(SearchRoutes.RapScreen.route)
                     }
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ay4ki6euani),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(20.dp))
+                )
+
                 Text(
                     text = "Rap",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = SpotiLightGray,
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.whole_lotta_red_wallpaper_2),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(80.dp)
-                        .align(Alignment.BottomEnd)
+                        .padding(top = 20.dp, start = 60.dp)
                 )
             }
         }
@@ -172,7 +177,7 @@ fun TopGenresSection() {
 }
 
 @Composable
-fun PopularPodcastCategoriesSection() {
+fun PopularPodcastCategoriesSection(navController: NavController) {
     Column() {
 
         Text(
@@ -189,26 +194,26 @@ fun PopularPodcastCategoriesSection() {
                     .height(110.dp)
                     .width(150.dp)
                     .clip(RoundedCornerShape(20.dp))
-                    .background(Color.Black)
-                    .padding(16.dp)
                     .clickable {
-
-                    },
+                        navController.navigate(SearchRoutes.PodcastsScreen.route)
+                    }
             ) {
-                Text(
-                    text = "Phonk",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = SpotiLightGray,
-                )
                 Image(
-                    painter = painterResource(id = R.drawable.jf7_opr81j0),
+                    painter = painterResource(id = R.drawable.maxresdefault),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(80.dp)
-                        .padding(top = 15.dp)
-                        .align(Alignment.BottomEnd)
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(20.dp))
+                )
+
+                Text(
+                    text = "Podcasts",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = SpotiLightGray,
+                    modifier = Modifier
+                        .padding(top = 80.dp, start = 40.dp)
                 )
             }
             Spacer(modifier = Modifier.width(20.dp))
@@ -218,25 +223,26 @@ fun PopularPodcastCategoriesSection() {
                     .height(110.dp)
                     .width(150.dp)
                     .clip(RoundedCornerShape(20.dp))
-                    .background(Color(0xFFEF212E))
-                    .padding(16.dp)
                     .clickable {
-
+                        navController.navigate(SearchRoutes.ComedyScreen.route)
                     }
             ) {
-                Text(
-                    text = "Rap",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = SpotiLightGray,
-                )
                 Image(
-                    painter = painterResource(id = R.drawable.whole_lotta_red_wallpaper_2),
+                    painter = painterResource(id = R.drawable._af482_eabbc68966d54c3db45a306583663890_mv2),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(80.dp)
-                        .align(Alignment.BottomEnd)
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(20.dp))
+                )
+
+                Text(
+                    text = "Comedy",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = SpotiLightGray,
+                    modifier = Modifier
+                        .padding(top = 80.dp, start = 45.dp)
                 )
             }
         }
@@ -244,17 +250,82 @@ fun PopularPodcastCategoriesSection() {
 }
 
 @Composable
-fun BrowseAllSection() {
-    Column() {
+fun BrowseAllSection(navController: NavController) {
+    Text(
+        text = "Browse all",
+        fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold,
+        color = SpotiDark,
+        modifier = Modifier.padding()
+    )
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
+    ) {
 
-        Text(
-            text = "Browse all",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = SpotiDark,
-            modifier = Modifier.padding()
-        )
         Spacer(modifier = Modifier.height(10.dp))
+
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .width(200.dp)
+                .clickable {
+
+                }
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.scale_1200),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp)
+                    .background(SpotiGreen, shape = CircleShape)
+                    .size(30.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(25.dp)
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .width(200.dp)
+                .clickable {
+
+                }
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.frenk_sinatra_52),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp)
+                    .background(SpotiGreen, shape = CircleShape)
+                    .size(30.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(25.dp)
+                )
+            }
+        }
 
     }
 }
