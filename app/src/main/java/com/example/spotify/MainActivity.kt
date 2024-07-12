@@ -38,8 +38,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             //NavGraphWelcome()
-            MainScreen()
-            //NavGraphSearch()
+            //MainScreen()
+            NavGraphSearch()
         }
     }
 }
