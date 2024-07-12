@@ -45,3 +45,30 @@ fun SongsList(songsList: List<Song>, onSongSelected: (song: Song) -> Unit) {
         }
     }
 }
+
+@Composable
+fun SongsListPhonk(songsList: List<Song>, onSongSelected: (song: Song) -> Unit) {
+    var isSongSelected by remember { mutableStateOf(false) }
+    LazyColumn(
+        modifier = Modifier.background(SpotiLightGray)
+            .fillMaxSize()
+            .padding(
+                bottom = if (isSongSelected) {
+                    48.dp
+                } else {
+                    4.dp
+                }
+            )
+    ) {
+        items(songsList) { song ->
+            SongCard(song = song, onClick = {
+                isSongSelected = true
+                SongHelper.stopStream()
+                onSongSelected(song)
+            })
+        }
+        item {
+            Spacer(modifier = Modifier.height(100.dp))
+        }
+    }
+}

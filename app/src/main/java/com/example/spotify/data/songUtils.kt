@@ -371,3 +371,200 @@ val songsList: List<Song> = listOf(
     */
 
 )
+
+val phonkList: List<Song> = listOf(
+
+    Song(
+        imageUrl = "https://i.pinimg.com/736x/a1/1b/5c/a11b5cb94ae75a351addeca40a0b2bc5.jpg",
+        media = "https://rus.hitmotop.com/get/music/20240530/PXLWYSE_-_Eu_Sento_Gabu_77884722.mp3",
+        duration = "1:47",
+        title = "Eu Sento Gabu",
+        artist = "PXLWYSE"
+    ),
+
+    Song(
+        imageUrl = "https://i.pinimg.com/736x/a1/1b/5c/a11b5cb94ae75a351addeca40a0b2bc5.jpg",
+        media = "https://rus.hitmotop.com/get/music/20240605/PXLWYSE_tema_-_Eu_Sento_Gabu_Super_Slowed_77918832.mp3",
+        duration = "1:50",
+        title = "Eu Sento Gabu (Super Slowed)",
+        artist = "PXLWYSE"
+    ),
+
+    Song(
+        imageUrl = "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/15/c7/e515c7a4-a654-c711-bae4-827b5787e21e/1963622192852_cover.jpg/1200x1200bf-60.jpg",
+        media = "https://rus.hitmotop.com/get/music/20240308/HR_Irokz_-_EEYUH_Irokz_Remix_77548915.mp3",
+        duration = "",
+        title = "EEYUH! (Irokz Remix)",
+        artist = "HR, Irokz"
+    ),
+
+    Song(
+        imageUrl = "https://cdn52.zvuk.com/pic?type=release&id=29660250&ext=jpg&size=1200x1200",
+        media = "https://rus.hitmotop.com/get/music/20231204/Memphis_Cult_Groove_Dealers_SPLYXER_-_9mm_77013507.mp3",
+        duration = "1:27",
+        title = "9mm",
+        artist = "Memphis Cult, Groove Dealers, SPLYXER"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.mds.yandex.net/i?id=4bad635e0cf50286567da8970620864cb3fdeb6e84844212-10231289-images-thumbs&n=13",
+        media = "https://rus.hitmotop.com/get/music/20240424/Evielie_-_Bye_Bye_-_Mewing_Phonk_77755960.mp3",
+        duration = "2:00",
+        title = "Bye Bye - Mewing Phonk",
+        artist = "Evielie"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/153909?type=BeatImageOriginal&ver=1",
+        media = "https://rus.hitmotop.com/get/music/20220426/Playboi_Carti_-_sky_nightcore_by_ssnthom_74109415.mp3",
+        duration = "2:46",
+        title = "Sky (nightcore)",
+        artist = "Playboi Carti"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/153909?type=BeatImageOriginal&ver=1",
+        media = "https://rus.hitmotop.com/get/music/20201226/Playboi_Carti_-_Sky_slowed_reverb_72100298.mp3",
+        duration = "3:37",
+        title = "Sky (slowed reverb)",
+        artist = "Playboi Carti"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/6058982/befb7241.a.30804014-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20240519/Eternxlkz_-_FORCE_77820205.mp3",
+        duration = "1:58",
+        title = "FORCE",
+        artist = "Eternxlkz"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/10918712/139e8639.a.31041582-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20240425/Eternxlkz_-_SLAY_77756783.mp3",
+        duration = "1:47",
+        title = "SLAY!",
+        artist = "Eternxlkz"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/10918712/139e8639.a.31041582-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20240425/Eternxlkz_-_SLAY_Slowed_Reverb_77756784.mp3",
+        duration = "2:32",
+        title = "SLAY! (slowed)",
+        artist = "Eternxlkz"
+    ),
+
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/10874616/a1d3ddc4.a.30133129-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20240326/TENZOO_-_BLOODY_BRAZIL_77638730.mp3",
+        duration = "1:34",
+        title = "BLOODY BRAZIL",
+        artist = "TENZOO"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.dzeninfra.ru/get-zen_doc/3362051/pub_6140e75bb88394586429d7ba_6140f18fa0a9853441caa30e/scale_1200",
+        media = "https://rus.hitmotop.com/get/music/20180728/Rammstein_-_Sonne_57658982.mp3",
+        duration = "4:32",
+        title = "Sonne",
+        artist = "Rammstein"
+    ),
+    Song(
+        imageUrl = "https://avatars.dzeninfra.ru/get-zen_doc/3362051/pub_6140e75bb88394586429d7ba_6140f18fa0a9853441caa30e/scale_1200",
+        media = "https://rus.hitmotop.com/get/music/20190328/Rammstein_-_Deutchland_63111983.mp3",
+        duration = "5:26",
+        title = "Deutchland",
+        artist = "Rammstein"
+    ),
+
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/10874616/ba3259ef.a.29986104-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20240409/Atwyod_-_cleared_77705614.mp3",
+        duration = "1:55",
+        title = "cleared",
+        artist = "Atwyod"
+    ),
+
+    Song(
+        imageUrl = "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/15/c7/e515c7a4-a654-c711-bae4-827b5787e21e/1963622192852_cover.jpg/1200x1200bf-60.jpg",
+        media = "https://rus.hitmotop.com/get/music/20240119/HR_-_eeyuh_irokz_remix_nightcorebot_77305697.mp3",
+        duration = "1:37",
+        title = "EEYUH! (nightcore)",
+        artist = "HR, Irokz"
+    ),
+
+    Song(
+        imageUrl = "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/15/c7/e515c7a4-a654-c711-bae4-827b5787e21e/1963622192852_cover.jpg/1200x1200bf-60.jpg",
+        media = "https://rus.hitmotop.com/get/music/20240308/HR_Irokz_-_EEYUH_Irokz_Remix_77548915.mp3",
+        duration = "2:00",
+        title = "EEYUH! (Irokz Remix)",
+        artist = "HR, Irokz"
+    ),
+
+    Song(
+        imageUrl = "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/15/c7/e515c7a4-a654-c711-bae4-827b5787e21e/1963622192852_cover.jpg/1200x1200bf-60.jpg",
+        media = "https://rus.hitmotop.com/get/music/20240308/HR_Irokz_-_EEYUH_Irokz_Remix_Super_Slowed_77548918.mp3",
+        duration = "2:57",
+        title = "EEYUH! (SLOWED)",
+        artist = "HR, Irokz"
+    ),
+
+    Song(
+        imageUrl = "https://shjest-strun.ru/wp-content/uploads/b/0/7/b073e2800ad9e2bf6150ae41228d311e.jpeg",
+        media = "https://rus.hitmotop.com/get/music/20231029/Nirvana_-_Smells_Like_Teen_Spirit_slowed_reverb_Chill_Phonk_Edit_by_Boxmoke_76907548.mp3",
+        duration = "2:08",
+        title = "Smells Like Teen Spirit (phonk)",
+        artist = "Nirvana"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/10210263/b2314de1.a.26859423-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20230416/Slowboy_NUEKI_Crazy_Mano_feat_TOLCHONOV_-_Life_in_Rio_75796886.mp3",
+        duration = "1:34",
+        title = "Life in Rio",
+        artist = "Slowboy, NUEKI, Crazy Mano feat. TOLCHONOV"
+    ),
+
+    Song(
+        imageUrl = "https://sun1-14.userapi.com/s/v1/ig2/7ugQPh9s2jcpRDr8lGHslBZJxQqw2TLp7mIEOzAcgmDWmRHlb1VPeWsujiX7N8P-4MXE0gFSfBgin6fIWcVHWeR6.jpg?size=871x871&quality=96&crop=36,563,871,871&ava=1",
+        media = "https://rus.hitmotop.com/get/music/20240223/vtze_-_MONTAGEM_DIAMANTE_ROSA_77484690.mp3",
+        duration = "1:39",
+        title = "MONTAGEM DIAMANTE ROSA",
+        artist = "vtze"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/235924?type=BeatImageOriginal&ver=1",
+        media = "https://muz-monster.ru/mp3/0/MjQyMjIzMDk1XzQ1NjI0NzEwMF9lNzM5ODY1YWEwNjliNzcxYTRfMTJkNmIxMDI0OTM2NzllMjYxLzwhfCE-WyJncyIsMCwieWVhdCBcdTIwMTMgZ3VpdGFyIHggemFuZ2V0c3UgeCB1IGNvdWxkIHRlbGwgc2xvd2VkIG5pZ2h0Y29yZWJvdCIsMSxudWxsLDAsNTAsMF08IXwhPjIzPCF8IT44OTE4MzgxODgwNV8xLmNvb2tpZQ==/Yeat+-+guitar+x+Zangetsu+x+U+Could+Tell+Slowed_(Muz-Monster.ru).mp3",
+        duration = "3:16",
+        title = "U Could Tell (Slowed)",
+        artist = "Yeat x Zangetsu"
+    ),
+
+    Song(
+        imageUrl = "https://yt3.googleusercontent.com/ha8XYtDW8Ymn99BQIrjKZurVJ5JLw30OzSmo7ysgcAnI4MJVvK46KehYN6nuFDU0UfXU0hpiQA=s900-c-k-c0x00ffffff-no-rj",
+        media = "https://muz-monster.ru/mp3/0/NTY1MjUwMDE5XzQ1NjIzOTk1Nl83ZDk1MGJkOTM5MDk5NTBmNzJfNGM2ZWMxYzcyM2VkYjA1MGZjLzwhfCE-WyJncyIsMSwid29haC4gXHUyMDEzIHByb2RieTY2OCAtIGRpZSBhZ2Fpbi4gKHNsb3dlZCAmIGVkaXRlZCkiLDEsbnVsbCwwLDUwLDBdPCF8IT4yODwhfCE-Nzk2MzQxNzMwOTZfMS5jb29raWU=/woah.+-+prodby668+-+die+again.+%28slowed+%26+edited%29_(Muz-Monster.ru).mp3",
+        duration = "2:40",
+        title = "die again",
+        artist = "prodby668"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/153909?type=BeatImageOriginal&ver=1",
+        media = "https://rus.hitmotop.com/get/music/20201226/Playboi_Carti_-_Over_72097436.mp3",
+        duration = "2:46",
+        title = "Over",
+        artist = "Playboi Carti"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/153909?type=BeatImageOriginal&ver=1",
+        media = "https://rus.hitmotop.com/get/music/20201226/Playboi_Carti_-_Stop_Breathing_72097417.mp3",
+        duration = "3:39",
+        title = "Stop Breathing",
+        artist = "Playboi Carti"
+    ),
+
+)

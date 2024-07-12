@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.spotify.data.phonkList
+import com.example.spotify.data.songsList
 import com.example.spotify.presentation.AuthScreen
 import com.example.spotify.presentation.ChooseThemeScreen
 import com.example.spotify.presentation.FirstScreen
@@ -35,7 +37,8 @@ fun NavGraphSearch() {
         }
 
         composable(SearchRoutes.PhonkScreen.route) {
-            PhonkScreen(navController = navController)
+            PhonkScreen(navController = navController,
+                phonkList)
         }
 
         composable(SearchRoutes.ComedyScreen.route) {
