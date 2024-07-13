@@ -60,6 +60,7 @@ fun NewsScreen(navController: NavController){
         .background(SpotiLightGray)
         .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.height(16.dp))
         SearchBar()
         Spacer(modifier = Modifier.height(16.dp))
         TopGenresSection(navController = navController)
@@ -251,6 +252,7 @@ fun PopularPodcastCategoriesSection(navController: NavController) {
 
 @Composable
 fun BrowseAllSection(navController: NavController) {
+    Spacer(modifier = Modifier.height(20.dp))
     Text(
         text = "Browse all",
         fontSize = 16.sp,
@@ -266,11 +268,11 @@ fun BrowseAllSection(navController: NavController) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Box(
-            modifier = Modifier
+            modifier = Modifier.clip(RoundedCornerShape(10.dp))
                 .height(200.dp)
                 .width(200.dp)
                 .clickable {
-
+                    navController.navigate(SearchRoutes.KinoScreen.route)
                 }
         ) {
             Image(
@@ -297,15 +299,15 @@ fun BrowseAllSection(navController: NavController) {
         }
         Spacer(modifier = Modifier.height(20.dp))
         Box(
-            modifier = Modifier
+            modifier = Modifier.clip(RoundedCornerShape(10.dp))
                 .height(200.dp)
                 .width(200.dp)
                 .clickable {
-
+                    navController.navigate(SearchRoutes.BudaScreen.route)
                 }
         ) {
             Image(
-                painter = painterResource(id = R.drawable.frenk_sinatra_52),
+                painter = painterResource(id = R.drawable.buda),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -326,6 +328,40 @@ fun BrowseAllSection(navController: NavController) {
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Box(
+            modifier = Modifier.clip(RoundedCornerShape(10.dp))
+                .height(200.dp)
+                .width(200.dp)
+                .clickable {
+                    navController.navigate(SearchRoutes.WholeLottaRedScreen.route)
+                }
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.whlr),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp)
+                    .background(SpotiGreen, shape = CircleShape)
+                    .size(30.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(25.dp)
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(36.dp))
 
     }
 }

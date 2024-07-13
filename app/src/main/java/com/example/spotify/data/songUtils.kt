@@ -568,3 +568,46 @@ val phonkList: List<Song> = listOf(
     ),
 
 )
+
+val rapList: List<Song> = listOf(
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/235924?type=BeatImageOriginal&ver=1",
+        media = "https://muz-monster.ru/mp3/0/MjQyMjIzMDk1XzQ1NjI0NzEwMF9lNzM5ODY1YWEwNjliNzcxYTRfMTJkNmIxMDI0OTM2NzllMjYxLzwhfCE-WyJncyIsMCwieWVhdCBcdTIwMTMgZ3VpdGFyIHggemFuZ2V0c3UgeCB1IGNvdWxkIHRlbGwgc2xvd2VkIG5pZ2h0Y29yZWJvdCIsMSxudWxsLDAsNTAsMF08IXwhPjIzPCF8IT44OTE4MzgxODgwNV8xLmNvb2tpZQ==/Yeat+-+guitar+x+Zangetsu+x+U+Could+Tell+Slowed_(Muz-Monster.ru).mp3",
+        duration = "3:16",
+        title = "U Could Tell (Slowed)",
+        artist = "Yeat x Zangetsu"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/153909?type=BeatImageOriginal&ver=1",
+        media = "https://rus.hitmotop.com/get/music/20220426/Playboi_Carti_-_sky_nightcore_by_ssnthom_74109415.mp3",
+        duration = "2:46",
+        title = "Sky (nightcore)",
+        artist = "Playboi Carti"
+    ),
+
+    Song(
+        imageUrl = "https://beatmaker.tv/Default/General/Image/153909?type=BeatImageOriginal&ver=1",
+        media = "https://rus.hitmotop.com/get/music/20201226/Playboi_Carti_-_Sky_slowed_reverb_72100298.mp3",
+        duration = "3:37",
+        title = "Sky (slowed reverb)",
+        artist = "Playboi Carti"
+    ),
+
+    Song(
+        imageUrl = "https://avatars.yandex.net/get-music-content/10126140/47f6446a.a.31756615-1/m1000x1000?webp=false",
+        media = "https://rus.hitmotop.com/get/music/20240621/uniqe_nkeeei_ARTEM_SHILOVETS_Wipo_-_GLAMUR_78009739.mp3",
+        duration = "3:08",
+        title = "ГЛАМУР",
+        artist = "uniqe, nkeeei, ARTEM SHILOVETS, Wipo"
+    ),
+
+    Song(
+        imageUrl = "https://sun6-23.userapi.com/s/v1/ig2/f93d_qmUTISRp1tpGPxN2cQLDn5oDTe3cpl7gxWCj0_Bv34DhYxbx6jvSs-O5ccgS5ZAIIfsajSMP94a0xnY-jZA.jpg?size=1077x1077&quality=96&crop=489,0,1077,1077&ava=1",
+        media = "https://rus.hitmotop.com/get/music/20170907/Playboi_Carti_-_Magnolia_48365241.mp3",
+        duration = "3:01",
+        title = "Magnolia",
+        artist = "Playboi Carti"
+    ),
+)
