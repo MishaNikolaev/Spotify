@@ -18,15 +18,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.PauseCircle
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.PlayCircle
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.SkipNext
-import androidx.compose.material.icons.filled.SkipPrevious
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults

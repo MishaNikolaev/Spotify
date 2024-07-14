@@ -30,6 +30,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -40,10 +42,11 @@ import com.example.spotify.data.songsList
 import com.example.spotify.presentation.AuthScreen
 import com.example.spotify.presentation.ChooseThemeScreen
 import com.example.spotify.presentation.FirstScreen
-import com.example.spotify.presentation.HomeScreen
 import com.example.spotify.presentation.RegisterScreen
 import com.example.spotify.presentation.SignInScreen
 import com.example.spotify.presentation.home.HomeScreenUI
+import com.example.spotify.presentation.home_screen.HomeScreen
+import com.example.spotify.presentation.home_screen.HomeViewModel
 import com.example.spotify.presentation.news.NewsScreen
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
@@ -86,7 +89,8 @@ fun NavGraphWelcome() {
         }
 
         composable(WelcomeRoutes.HomeScreen.route) {
-            HomeScreen(songsList)
+//            val viewModel:HomeViewModel = hiltViewModel()
+//            HomeScreen(viewModel.state.value)
         }
 
         composable(WelcomeRoutes.HomeScreen.route) {
@@ -162,6 +166,7 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
             NewsScreen(navController)
         }
         composable(BottomNavItem.Favorite.route) {
+//            val viewModel:HomeViewModel = hiltViewModel()
             HomeScreen(songsList)
         }
     }

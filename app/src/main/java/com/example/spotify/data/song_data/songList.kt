@@ -37,7 +37,7 @@ fun SongsList(songsList: List<Song>, onSongSelected: (song: Song) -> Unit) {
             SongCard(song = song, onClick = {
                 isSongSelected = true
                 SongHelper.stopStream()
-                onSongSelected(song)
+//                onSongSelected(song)
             })
         }
         item {

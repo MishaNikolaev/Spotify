@@ -1,4 +1,4 @@
-package com.example.spotify.presentation
+package com.example.spotify.presentation.home_screen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -48,6 +48,7 @@ import com.example.spotify.data.song_data.SongsList
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
+
 
 @Composable
 fun HomeScreen(songsList: List<Song>) {
@@ -100,6 +101,61 @@ fun HomeScreen(songsList: List<Song>) {
                     }
                 }
             )
+        }
+    }
+}
+
+@Composable
+fun HomeScreenNew(state: HomeState) {
+//    var searchSongState = remember { mutableStateOf("") }
+//    var selectedSongIndex by remember { mutableStateOf(0) }
+//    val selectedSong = songsList[selectedSongIndex]
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(SpotiLightGray),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.spot_big),
+            contentDescription = "Spotify Logo",
+            modifier = Modifier
+                .size(140.dp)
+                .padding(top = 20.dp),
+            alignment = Alignment.Center
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 14.dp)
+        ) {
+            SongsList(
+                songsList = state.songlist,
+                onSongSelected = { song ->
+//                    selectedSongIndex = songsList.indexOf(song)
+                }
+            )
+
+//            MediaPlayerCard(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .align(Alignment.BottomCenter)
+//                    .background(Color.Transparent),
+//                song = selectedSong,
+//                previousSong = {
+//                    if (selectedSongIndex > 0) {
+//                        selectedSongIndex--
+//                    }
+//                },
+//                nextSong = {
+//                    if (selectedSongIndex < songsList.size - 1) {
+//                        selectedSongIndex++
+//                    }
+//                }
+//            )
         }
     }
 }
