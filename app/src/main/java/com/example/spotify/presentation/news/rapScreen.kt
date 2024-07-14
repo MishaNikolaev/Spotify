@@ -47,7 +47,7 @@ import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
 
 @Composable
-fun RapScreen(navController: NavController, songsList: List<Song>){
+fun RapScreen(songsList: List<Song>){
     var searchSongState = remember { mutableStateOf("") }
     var selectedSongIndex by remember { mutableStateOf(0) }
     val selectedSong = songsList[selectedSongIndex]

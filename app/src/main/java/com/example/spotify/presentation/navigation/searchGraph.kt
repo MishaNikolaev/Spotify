@@ -60,8 +60,7 @@ fun NavGraphSearch() {
         }
 
         composable(SearchRoutes.RapScreen.route) {
-            RapScreen(navController = navController,
-                rapList)
+            RapScreen(rapList)
         }
 
         composable(SearchRoutes.BudaScreen.route) {

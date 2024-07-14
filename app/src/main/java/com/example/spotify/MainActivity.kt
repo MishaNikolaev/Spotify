@@ -39,8 +39,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            //NavGraphWelcome()
-            MainScreen()
+            NavGraphWelcome()
+            //MainScreen()
             //NavGraphSearch()
         }
     }
