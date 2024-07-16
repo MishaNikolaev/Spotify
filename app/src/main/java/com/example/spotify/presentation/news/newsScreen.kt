@@ -3,7 +3,6 @@ package com.example.spotify.presentation.news
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,12 +16,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -42,24 +39,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.spotify.R
-import com.example.spotify.data.song_data.MediaPlayerCard
-import com.example.spotify.data.song_data.SongsList
-import com.example.spotify.data.songsList
-import com.example.spotify.presentation.HomeScreen
 import com.example.spotify.presentation.navigation.SearchRoutes
-import com.example.spotify.presentation.navigation.WelcomeRoutes
 import com.example.spotify.ui.theme.SpotiDark
 import com.example.spotify.ui.theme.SpotiGreen
 import com.example.spotify.ui.theme.SpotiLightGray
 
 @Composable
-fun NewsScreen(navController: NavController){
-    Column(modifier = Modifier
-        .verticalScroll(rememberScrollState())
-        .fillMaxSize()
-        .background(SpotiLightGray)
-        .padding(16.dp)
+fun NewsScreen(navController: NavController) {
+    Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .fillMaxSize()
+            .background(SpotiLightGray)
+            .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.height(16.dp))
         SearchBar()
         Spacer(modifier = Modifier.height(16.dp))
         TopGenresSection(navController = navController)
@@ -251,6 +245,7 @@ fun PopularPodcastCategoriesSection(navController: NavController) {
 
 @Composable
 fun BrowseAllSection(navController: NavController) {
+    Spacer(modifier = Modifier.height(20.dp))
     Text(
         text = "Browse all",
         fontSize = 16.sp,
@@ -267,10 +262,11 @@ fun BrowseAllSection(navController: NavController) {
 
         Box(
             modifier = Modifier
+                .clip(RoundedCornerShape(10.dp))
                 .height(200.dp)
                 .width(200.dp)
                 .clickable {
-
+                    navController.navigate(SearchRoutes.KinoScreen.route)
                 }
         ) {
             Image(
@@ -298,14 +294,15 @@ fun BrowseAllSection(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
         Box(
             modifier = Modifier
+                .clip(RoundedCornerShape(10.dp))
                 .height(200.dp)
                 .width(200.dp)
                 .clickable {
-
+                    navController.navigate(SearchRoutes.BudaScreen.route)
                 }
         ) {
             Image(
-                painter = painterResource(id = R.drawable.frenk_sinatra_52),
+                painter = painterResource(id = R.drawable.buda),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -326,6 +323,41 @@ fun BrowseAllSection(navController: NavController) {
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .height(200.dp)
+                .width(200.dp)
+                .clickable {
+                    navController.navigate(SearchRoutes.WholeLottaRedScreen.route)
+                }
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.whlr),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp)
+                    .background(SpotiGreen, shape = CircleShape)
+                    .size(30.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(25.dp)
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(36.dp))
 
     }
 }

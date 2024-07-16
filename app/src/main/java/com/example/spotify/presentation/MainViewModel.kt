@@ -10,24 +10,5 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SongViewModel: ViewModel() {
-    private val _songState = MutableStateFlow(false)
-    val songState: StateFlow<Boolean> = _songState
 
-    fun playSong() {
-        _songState.value = true
-        SongHelper.playStream("")
-    }
-
-    fun pauseSong() {
-        _songState.value = false
-        SongHelper.pauseStream()
-    }
-
-    fun toggleSongState() {
-        if (_songState.value) {
-            pauseSong()
-        } else {
-            playSong()
-        }
-    }
 }
