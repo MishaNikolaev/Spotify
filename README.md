@@ -3,5 +3,5 @@ Maybe this app will be example for design or media player.**
 
 At first, there are auth screens (design and nothing at all). You can find this screens in folder presentation -> firstScreen.kt (or chooseThemeScreen.kt)
 
-![alt-text-1]<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num1.jpg" width="300" height="600">
-![alt-text-2]<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num2.jpg" width="300" height="600">
+<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num1.jpg" width="300" height="600">
+<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num2.jpg" width="300" height="600">
