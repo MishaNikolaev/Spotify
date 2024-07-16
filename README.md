@@ -37,3 +37,15 @@ P.S. I disabled sign in screen that i can fast forward to main part of app ( i d
 ```
 
 <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num3.jpg" width="300" height="600"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num4.jpg" width="300" height="600"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num5.jpg" width="300" height="600">
+
+In firebase console this looks like:
+![logs](https://github.com/MishaNikolaev/Spotify/blob/feature/fb_console.jpg)
+
+Then i did bottom bar with three screens - home (where i did nothing), search (all files in news package) and person (HomeScreenUI.kt). 
+All about media player locate in data -> song_data package. 
+
+Rest of screens:
+
+<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num6.jpg" width="300" height="600"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num7.jpg" width="300" height="600"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num8.jpg" width="300" height="600">  
+
+
