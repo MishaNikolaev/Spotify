@@ -230,5 +230,37 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
                 rapList
             )
         }
+
+        composable(SearchRoutes.PhonkScreen.route) {
+            PhonkScreen(navController = navController,
+                phonkList)
+        }
+
+        composable(SearchRoutes.ComedyScreen.route) {
+            ComedyScreen(navController = navController)
+        }
+
+        composable(SearchRoutes.PodcastsScreen.route) {
+            PodcastsScreen(navController = navController)
+        }
+
+        composable(SearchRoutes.BudaScreen.route) {
+            BudaScreen(navController = navController,
+                budaList
+            )
+        }
+
+        composable(SearchRoutes.KinoScreen.route) {
+            KinoScreen(navController = navController,
+                kinoList
+            )
+        }
+
+        composable(SearchRoutes.WholeLottaRedScreen.route) {
+            WholeLottaRedScreen(
+                navController = navController,
+                wlrList
+            )
+        }
     }
 }
