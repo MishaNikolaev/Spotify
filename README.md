@@ -46,6 +46,6 @@ All about media player locate in data -> song_data package.
 
 Rest of screens:
 
-<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num6.jpg" width="400" height="700"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num7.jpg" width="400" height="700"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num8.jpg" width="400" height="700">  
+<img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num6.jpg" width="350" height="700"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num7.jpg" width="350" height="700"> <img src="https://github.com/MishaNikolaev/Spotify/blob/feature/num8.jpg" width="350" height="700">  
 
 
